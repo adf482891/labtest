@@ -1,0 +1,25 @@
+{
+	"name": "TriggerAt10",
+	"properties": {
+		"description": "Everyday at 10 PM IST",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "LoadCampaignAnalyticsPipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-11-02T00:37:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
