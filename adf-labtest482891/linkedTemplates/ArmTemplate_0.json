@@ -331,6 +331,38 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/CampaignAnalytics_Dataflow')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TriggerAt10')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Everyday at 10 PM IST",
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "LoadCampaignAnalyticsPipeline",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2022-11-02T00:37:00",
+						"timeZone": "India Standard Time",
+						"schedule": {}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/LoadCampaignAnalyticsPipeline')]"
+			]
 		}
 	]
 }
